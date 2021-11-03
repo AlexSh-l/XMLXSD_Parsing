@@ -1,0 +1,1 @@
+2021-11-03 23:20:26 [main] [main] [14] INFO  com.alex.xmlxsdparsing.Main - true

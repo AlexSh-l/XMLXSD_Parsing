@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:TouristVouchers
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:c="http://www.task3.com/tourist-vouchers"
+        xsi:schemaLocation="http://www.task3.com/tourist-vouchers schema.xsd">
+
+    <c:tourist-voucher id="ID-1235469875">
+        <VoucherType>Пакетный тур</VoucherType>
+        <Country>Мексика</Country>
+        <Number-days>2</Number-days>
+        <Number-nights>2</Number-nights>
+        <Transport>
+            <type>Самолёт</type>
+            <type>Автобус</type>
+        </Transport>
+        <Hotel name="BellaVingtol">
+            <stars>5</stars>
+            <is-food-included>true</is-food-included>
+            <food>UAI</food>
+            <amount-of-rooms>2</amount-of-rooms>
+            <is-tv-included>true</is-tv-included>
+            <is-conditioner-included>true</is-conditioner-included>
+        </Hotel>
+        <Cost>
+            <cost>2000.25</cost>
+            <includes>Проживание в отеле</includes>
+            <includes>Поездка от аэропорта</includes>
+        </Cost>
+    </c:tourist-voucher>
+
+    <c:tourist-voucher id="ID-1343">
+        <VoucherType>Шоп-тур</VoucherType>
+        <Country>Германия</Country>
+        <Number-days>10</Number-days>
+        <Number-nights>9</Number-nights>
+        <Transport>
+            <type>Автобус</type>
+        </Transport>
+        <Hotel name="Grettenburg">
+            <stars>3</stars>
+            <is-food-included>true</is-food-included>
+            <food>BB</food>
+            <amount-of-rooms>1</amount-of-rooms>
+            <is-tv-included>true</is-tv-included>
+            <is-conditioner-included>false</is-conditioner-included>
+        </Hotel>
+        <Cost>
+            <cost>500.0</cost>
+            <includes>Проживание в отеле</includes>
+            <includes>Поездка на автобусе</includes>
+        </Cost>
+    </c:tourist-voucher>
+
+    <c:tourist-voucher id="ID-567">
+        <VoucherType>Морской круиз</VoucherType>
+        <Country>Норвегия</Country>
+        <Number-days>31</Number-days>
+        <Number-nights>32</Number-nights>
+        <Transport>
+            <type>Автобус</type>
+            <type>Паром</type>
+            <type>Круизный лайнер</type>
+        </Transport>
+        <Hotel name="Stratus">
+            <stars>5</stars>
+            <is-food-included>true</is-food-included>
+            <food>UAI</food>
+            <amount-of-rooms>5</amount-of-rooms>
+            <is-tv-included>true</is-tv-included>
+            <is-conditioner-included>true</is-conditioner-included>
+        </Hotel>
+        <Hotel name="Laint">
+            <stars>5</stars>
+            <is-food-included>true</is-food-included>
+            <food>BB</food>
+            <amount-of-rooms>3</amount-of-rooms>
+            <is-tv-included>true</is-tv-included>
+            <is-conditioner-included>false</is-conditioner-included>
+        </Hotel>
+        <Cost>
+            <cost>5000.0</cost>
+            <includes>Билеты на круизный лайнер</includes>
+            <includes>Поездка на автобусе</includes>
+            <includes>Поездка на пароме</includes>
+            <includes>Проживание в отеле</includes>
+        </Cost>
+    </c:tourist-voucher>
+</c:TouristVouchers>
