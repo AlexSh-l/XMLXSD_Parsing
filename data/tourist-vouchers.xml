@@ -5,14 +5,13 @@
         xsi:schemaLocation="http://www.task3.com/tourist-vouchers schema.xsd">
 
     <c:tourist-voucher id="ID-1235469875">
-        <VoucherType>Пакетный тур</VoucherType>
+        <Voucher-type>Packet_tour</Voucher-type>
         <Country>Мексика</Country>
         <Number-days>2</Number-days>
         <Number-nights>2</Number-nights>
-        <Transport>
-            <type>Самолёт</type>
-            <type>Автобус</type>
-        </Transport>
+        <Start-date>2022-07-10T11:00:00</Start-date>
+        <Transport>Самолёт</Transport>
+        <Transport>Автобус</Transport>
         <Hotel name="BellaVingtol">
             <stars>5</stars>
             <is-food-included>true</is-food-included>
@@ -29,13 +28,12 @@
     </c:tourist-voucher>
 
     <c:tourist-voucher id="ID-1343">
-        <VoucherType>Шоп-тур</VoucherType>
+        <Voucher-type>Shop_tour</Voucher-type>
         <Country>Германия</Country>
         <Number-days>10</Number-days>
         <Number-nights>9</Number-nights>
-        <Transport>
-            <type>Автобус</type>
-        </Transport>
+        <Start-date>2021-12-21T20:30:00</Start-date>
+        <Transport>Автобус</Transport>
         <Hotel name="Grettenburg">
             <stars>3</stars>
             <is-food-included>true</is-food-included>
@@ -52,15 +50,14 @@
     </c:tourist-voucher>
 
     <c:tourist-voucher id="ID-567">
-        <VoucherType>Морской круиз</VoucherType>
+        <Voucher-type>Cruise</Voucher-type>
         <Country>Норвегия</Country>
         <Number-days>31</Number-days>
         <Number-nights>32</Number-nights>
-        <Transport>
-            <type>Автобус</type>
-            <type>Паром</type>
-            <type>Круизный лайнер</type>
-        </Transport>
+        <Start-date>2022-08-01T13:30:00</Start-date>
+        <Transport>Автобус</Transport>
+        <Transport>Паром</Transport>
+        <Transport>Круизный лайнер</Transport>
         <Hotel name="Stratus">
             <stars>5</stars>
             <is-food-included>true</is-food-included>

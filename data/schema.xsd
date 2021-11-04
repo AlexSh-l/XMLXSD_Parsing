@@ -3,12 +3,6 @@
         targetNamespace="http://www.task3.com/tourist-vouchers"
         xmlns:c="http://www.task3.com/tourist-vouchers">
 
-    <complexType name="transport-type">
-        <sequence>
-            <element name="type" type="string" maxOccurs="unbounded"/>
-        </sequence>
-    </complexType>
-
     <complexType name="cost">
         <sequence>
             <element name="cost" type="double"/>
@@ -18,14 +12,14 @@
 
     <simpleType name="voucher-type">
         <restriction base="string">
-            <enumeration value="Пакетный тур"/>
-            <enumeration value="Индивидуальный тур"/>
-            <enumeration value="Горящий тур"/>
-            <enumeration value="Экскурсионный тур"/>
-            <enumeration value="Спортивный тур"/>
-            <enumeration value="Морской круиз"/>
-            <enumeration value="Горнолыжный тур"/>
-            <enumeration value="Шоп-тур"/>
+            <enumeration value="Packet_tour"/>
+            <enumeration value="Individual_tour"/>
+            <enumeration value="Burning_tour"/>
+            <enumeration value="Excursion_tour"/>
+            <enumeration value="Sport_tour"/>
+            <enumeration value="Cruise"/>
+            <enumeration value="Hiking_trip"/>
+            <enumeration value="Shop_tour"/>
         </restriction>
     </simpleType>
 
@@ -33,9 +27,7 @@
         <restriction base="string">
             <enumeration value="BB"/>
             <enumeration value="HB"/>
-            <enumeration value="HB+"/>
             <enumeration value="FB"/>
-            <enumeration value="FB+"/>
             <enumeration value="AI"/>
             <enumeration value="UAI"/>
         </restriction>
@@ -64,8 +56,8 @@
     <complexType name="hotel">
         <sequence>
             <element name="stars" type="c:star-type"/>
-            <element name="is-food-included" type="boolean" minOccurs="1" maxOccurs="1"/>
-            <element name="food" type="c:food-type" minOccurs="0" maxOccurs="1"/>
+            <element name="is-food-included" type="boolean"/>
+            <element name="food" type="c:food-type" minOccurs="0"/>
             <element name="amount-of-rooms" type="c:room-type"/>
             <element name="is-tv-included" type="boolean"/>
             <element name="is-conditioner-included" type="boolean"/>
@@ -73,7 +65,7 @@
         <attribute name="name" type="string" use="required"/>
     </complexType>
 
-    <complexType name="voucher">
+    <complexType name="voucher" abstract="true">
         <attribute name="id" type="ID" use="required"/>
         <attribute name="name" type="string" use="optional"/>
     </complexType>
@@ -83,11 +75,12 @@
             <complexContent>
                 <extension base="c:voucher">
                     <sequence>
-                        <element name="VoucherType" type="c:voucher-type"/>
+                        <element name="Voucher-type" type="c:voucher-type"/>
                         <element name="Country" type="string" maxOccurs="unbounded"/>
                         <element name="Number-days" type="int"/>
                         <element name="Number-nights" type="int"/>
-                        <element name="Transport" type="c:transport-type"/>
+                        <element name="Start-date" type="dateTime"/>
+                        <element name="Transport" type="string" maxOccurs="unbounded"/>
                         <element name="Hotel" type="c:hotel" maxOccurs="unbounded"/>
                         <element name="Cost" type="c:cost" maxOccurs="unbounded"/>
                     </sequence>
