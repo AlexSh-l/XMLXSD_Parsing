@@ -15,20 +15,18 @@ public class TouristVoucher extends CustomVoucher {
     private LocalDateTime dateTime;
     private List<String> transport;
     private List<Hotel> hotel;
-    private List<Cost> cost;
+    private Cost cost;
 
     public TouristVoucher(){
         this.country = new ArrayList<>();
         this.transport= new ArrayList<>();
         this.hotel= new ArrayList<>();
-        this.cost= new ArrayList<>();
     }
 
-    public TouristVoucher(VoucherType voucherType, List<String> country, int numberDays, int numberNights, LocalDateTime dateTime, List<String> transport, List<Hotel> hotel, List<Cost> cost){
+    public TouristVoucher(VoucherType voucherType, List<String> country, int numberDays, int numberNights, LocalDateTime dateTime, List<String> transport, List<Hotel> hotel, Cost cost){
         this.country = new ArrayList<>();
         this.transport= new ArrayList<>();
         this.hotel= new ArrayList<>();
-        this.cost= new ArrayList<>();
         this.voucherType = voucherType;
         this.country = country;
         this.numberDays = numberDays;
@@ -131,24 +129,12 @@ public class TouristVoucher extends CustomVoucher {
         this.hotel.clear();
     }
 
-    public List<Cost> getCost() {
+    public Cost getCost() {
         return cost;
     }
 
-    public void setCost(List<Cost> cost) {
+    public void setCost(Cost cost) {
         this.cost = cost;
-    }
-
-    public void addCost(Cost item){
-        this.cost.add(item);
-    }
-
-    public void removeCost(Cost item){
-        this.cost.remove(item);
-    }
-
-    public void clearCost(){
-        this.cost.clear();
     }
 
     @Override

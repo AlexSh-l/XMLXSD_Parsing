@@ -12,7 +12,8 @@
         <Start-date>2022-07-10T11:00:00</Start-date>
         <Transport>Самолёт</Transport>
         <Transport>Автобус</Transport>
-        <Hotel name="BellaVingtol">
+        <Hotel>
+            <name>BellaVingtol</name>
             <stars>5</stars>
             <is-food-included>true</is-food-included>
             <food>UAI</food>
@@ -34,10 +35,10 @@
         <Number-nights>9</Number-nights>
         <Start-date>2021-12-21T20:30:00</Start-date>
         <Transport>Автобус</Transport>
-        <Hotel name="Grettenburg">
+        <Hotel>
+            <name>Grettenburg</name>
             <stars>3</stars>
-            <is-food-included>true</is-food-included>
-            <food>BB</food>
+            <is-food-included>false</is-food-included>
             <amount-of-rooms>1</amount-of-rooms>
             <is-tv-included>true</is-tv-included>
             <is-conditioner-included>false</is-conditioner-included>
@@ -52,13 +53,16 @@
     <c:tourist-voucher id="ID-567">
         <Voucher-type>Cruise</Voucher-type>
         <Country>Норвегия</Country>
+        <Country>Швеция</Country>
+        <Country>Италия</Country>
         <Number-days>31</Number-days>
         <Number-nights>32</Number-nights>
         <Start-date>2022-08-01T13:30:00</Start-date>
         <Transport>Автобус</Transport>
         <Transport>Паром</Transport>
         <Transport>Круизный лайнер</Transport>
-        <Hotel name="Stratus">
+        <Hotel>
+            <name>Stratus</name>
             <stars>5</stars>
             <is-food-included>true</is-food-included>
             <food>UAI</food>
@@ -66,7 +70,8 @@
             <is-tv-included>true</is-tv-included>
             <is-conditioner-included>true</is-conditioner-included>
         </Hotel>
-        <Hotel name="Laint">
+        <Hotel>
+            <name>Laint</name>
             <stars>5</stars>
             <is-food-included>true</is-food-included>
             <food>BB</food>
