@@ -1,15 +1,15 @@
 package com.alex.xmlxsdparsing;
 
 import com.alex.xmlxsdparsing.entity.TouristVoucher;
-import com.alex.xmlxsdparsing.exception.DomParserBuildVouchersException;
-import com.alex.xmlxsdparsing.exception.StaxParserBuildVouchersException;
-import com.alex.xmlxsdparsing.exception.ValidationException;
+import com.alex.xmlxsdparsing.exception.*;
 import com.alex.xmlxsdparsing.parser.DomParser;
+import com.alex.xmlxsdparsing.parser.SaxParser;
 import com.alex.xmlxsdparsing.parser.StaxParser;
 import com.alex.xmlxsdparsing.validator.impl.XMLValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.Set;
 
 public class Main {
@@ -33,12 +33,23 @@ public class Main {
         domVouchers.toString();
 
         StaxParser staxParser = new StaxParser();
-        try{
+        try {
             staxParser.buildSetVouchers("data/tourist-vouchers.xml");
-        }catch (StaxParserBuildVouchersException e){
+        } catch (StaxParserBuildVouchersException e) {
             logger.error(e.getMessage(), e);
         }
         Set<TouristVoucher> staxVouchers = staxParser.getVouchers();
         staxVouchers.toString();
+
+        SaxParser saxParser = new SaxParser();
+        try {
+            saxParser.buildSetVouchers("data/tourist-vouchers.xml");
+        } catch (SaxParserBuildVouchersException e) {
+            logger.error(e.getMessage(), e);
+        }
+        Set<TouristVoucher> saxVouchers = saxParser.getVouchers();
+        saxVouchers.toString();
+
+        //var t = Arrays.deepEquals(domVouchers.toArray(), saxVouchers.toArray());
     }
 }
