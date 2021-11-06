@@ -1,8 +1,9 @@
 package com.alex.xmlxsdparsing.parser;
 
 import com.alex.xmlxsdparsing.entity.TouristVoucher;
-import com.alex.xmlxsdparsing.errorhandler.TouristVouchersErrorHandler;
-import com.alex.xmlxsdparsing.exception.SaxParserBuildVouchersException;
+import com.alex.xmlxsdparsing.parser.errorhandler.TouristVouchersErrorHandler;
+import com.alex.xmlxsdparsing.exception.ParserBuildVouchersException;
+import com.alex.xmlxsdparsing.parser.builder.TouristVouchersBuilder;
 import com.alex.xmlxsdparsing.parser.handler.TouristVoucherHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +16,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.util.Set;
 
-public class SaxParser {
+public class SaxParser extends TouristVouchersBuilder {
 
     private static final Logger logger = LogManager.getLogger();
     private Set<TouristVoucher> vouchers;
@@ -38,13 +39,15 @@ public class SaxParser {
         return vouchers;
     }
 
-    public void buildSetVouchers(String filename) throws SaxParserBuildVouchersException {
+    @Override
+    public void buildSetVouchers(String filename) throws ParserBuildVouchersException {
         try {
             reader.parse(filename);
         } catch (IOException | SAXException e) {
             logger.error(e.getMessage(), e);
-            throw new SaxParserBuildVouchersException(e.getMessage(), e);
+            throw new ParserBuildVouchersException(e.getMessage(), e);
         }
         vouchers = handler.getVouchers();
+        super.setVouchers(vouchers);
     }
 }

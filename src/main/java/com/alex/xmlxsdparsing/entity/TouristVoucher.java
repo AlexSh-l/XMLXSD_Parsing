@@ -1,6 +1,6 @@
 package com.alex.xmlxsdparsing.entity;
 
-import com.alex.xmlxsdparsing.entity.enumerationvalue.VoucherType;
+import com.alex.xmlxsdparsing.entity.enumvalue.VoucherType;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,16 +17,16 @@ public class TouristVoucher extends CustomVoucher {
     private List<Hotel> hotel;
     private Cost cost;
 
-    public TouristVoucher(){
+    public TouristVoucher() {
         this.country = new ArrayList<>();
-        this.transport= new ArrayList<>();
-        this.hotel= new ArrayList<>();
+        this.transport = new ArrayList<>();
+        this.hotel = new ArrayList<>();
     }
 
-    public TouristVoucher(VoucherType voucherType, List<String> country, int numberDays, int numberNights, LocalDateTime dateTime, List<String> transport, List<Hotel> hotel, Cost cost){
+    public TouristVoucher(VoucherType voucherType, List<String> country, int numberDays, int numberNights, LocalDateTime dateTime, List<String> transport, List<Hotel> hotel, Cost cost) {
         this.country = new ArrayList<>();
-        this.transport= new ArrayList<>();
-        this.hotel= new ArrayList<>();
+        this.transport = new ArrayList<>();
+        this.hotel = new ArrayList<>();
         this.voucherType = voucherType;
         this.country = country;
         this.numberDays = numberDays;
@@ -53,15 +53,15 @@ public class TouristVoucher extends CustomVoucher {
         this.country = country;
     }
 
-    public void addCountry(String item){
+    public void addCountry(String item) {
         this.country.add(item);
     }
 
-    public void removeCountry(String item){
+    public void removeCountry(String item) {
         this.country.remove(item);
     }
 
-    public void clearCountry(){
+    public void clearCountry() {
         this.country.clear();
     }
 
@@ -97,15 +97,15 @@ public class TouristVoucher extends CustomVoucher {
         this.transport = transport;
     }
 
-    public void addTransport(String item){
+    public void addTransport(String item) {
         this.transport.add(item);
     }
 
-    public void removeTransport(String item){
+    public void removeTransport(String item) {
         this.transport.remove(item);
     }
 
-    public void clearTransport(){
+    public void clearTransport() {
         this.transport.clear();
     }
 
@@ -117,15 +117,15 @@ public class TouristVoucher extends CustomVoucher {
         this.hotel = hotel;
     }
 
-    public void addHotel(Hotel item){
+    public void addHotel(Hotel item) {
         this.hotel.add(item);
     }
 
-    public void removeHotel(Hotel item){
+    public void removeHotel(Hotel item) {
         this.hotel.remove(item);
     }
 
-    public void clearHotel(){
+    public void clearHotel() {
         this.hotel.clear();
     }
 

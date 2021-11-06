@@ -3,10 +3,8 @@ package com.alex.xmlxsdparsing.parser.handler;
 import com.alex.xmlxsdparsing.entity.Cost;
 import com.alex.xmlxsdparsing.entity.Hotel;
 import com.alex.xmlxsdparsing.entity.TouristVoucher;
-import com.alex.xmlxsdparsing.entity.enumerationvalue.FoodType;
-import com.alex.xmlxsdparsing.entity.enumerationvalue.VoucherType;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.alex.xmlxsdparsing.entity.enumvalue.FoodType;
+import com.alex.xmlxsdparsing.entity.enumvalue.VoucherType;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -16,7 +14,6 @@ import java.util.Set;
 
 public class TouristVoucherHandler extends DefaultHandler {
 
-    private static final Logger logger = LogManager.getLogger();
     private final Set<TouristVoucher> vouchers;
     private TouristVoucher voucher;
     private String currentXmlTag;
@@ -116,11 +113,6 @@ public class TouristVoucherHandler extends DefaultHandler {
                     cost.setCost(costCost);
                 }
                 case "includes" -> cost.addIncludes(data);
-                default -> {
-                    if (!currentXmlTag.equals("TouristVouchers")) {
-                        logger.error("Unknown xml tag");
-                    }
-                }
             }
         }
         currentXmlTag = null;

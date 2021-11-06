@@ -3,9 +3,10 @@ package com.alex.xmlxsdparsing.parser;
 import com.alex.xmlxsdparsing.entity.Cost;
 import com.alex.xmlxsdparsing.entity.Hotel;
 import com.alex.xmlxsdparsing.entity.TouristVoucher;
-import com.alex.xmlxsdparsing.entity.enumerationvalue.FoodType;
-import com.alex.xmlxsdparsing.entity.enumerationvalue.VoucherType;
-import com.alex.xmlxsdparsing.exception.DomParserBuildVouchersException;
+import com.alex.xmlxsdparsing.entity.enumvalue.FoodType;
+import com.alex.xmlxsdparsing.entity.enumvalue.VoucherType;
+import com.alex.xmlxsdparsing.exception.ParserBuildVouchersException;
+import com.alex.xmlxsdparsing.parser.builder.TouristVouchersBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.*;
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class DomParser {
+public class DomParser extends TouristVouchersBuilder {
 
     private static final Logger logger = LogManager.getLogger();
     private final Set<TouristVoucher> vouchers;
@@ -38,7 +39,8 @@ public class DomParser {
         return vouchers;
     }
 
-    public void buildSetVouchers(String filename) throws DomParserBuildVouchersException {
+    @Override
+    public void buildSetVouchers(String filename) throws ParserBuildVouchersException {
         Document doc;
         try {
             doc = docBuilder.parse(filename);
@@ -51,9 +53,10 @@ public class DomParser {
                     vouchers.add(voucher);
                 }
             }
+            super.setVouchers(vouchers);
         } catch (IOException | SAXException e) {
             logger.error(e.getMessage(), e);
-            throw new DomParserBuildVouchersException(e.getMessage(), e);
+            throw new ParserBuildVouchersException(e.getMessage(), e);
         }
     }
 
@@ -134,7 +137,7 @@ public class DomParser {
         for (int i = 0; i < elements.getLength(); i++) {
             Node cardElem = elements.item(i);
             if (cardElem.getNodeName().equals(elementName)) {
-                var childNodes = cardElem.getChildNodes();
+                NodeList childNodes = cardElem.getChildNodes();
                 for (int j = 0; j < childNodes.getLength(); j++) {
                     if (childNodes.item(j).getNodeName().equals(subElementName)) {
                         String text = childNodes.item(j).getTextContent();

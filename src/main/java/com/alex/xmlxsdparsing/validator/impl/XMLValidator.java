@@ -1,6 +1,6 @@
 package com.alex.xmlxsdparsing.validator.impl;
 
-import com.alex.xmlxsdparsing.errorhandler.TouristVouchersErrorHandler;
+import com.alex.xmlxsdparsing.parser.errorhandler.TouristVouchersErrorHandler;
 import com.alex.xmlxsdparsing.exception.ValidationException;
 import com.alex.xmlxsdparsing.validator.CustomXMLValidator;
 import org.xml.sax.SAXException;

@@ -8,11 +8,11 @@ public class Cost {
     private double cost;
     private List<String> includes;
 
-    public Cost(){
+    public Cost() {
         this.includes = new ArrayList<>();
     }
 
-    public Cost(double cost, List<String> includes){
+    public Cost(double cost, List<String> includes) {
         this.includes = new ArrayList<>();
         this.cost = cost;
         this.includes = includes;
@@ -34,15 +34,15 @@ public class Cost {
         this.includes = includes;
     }
 
-    public void addIncludes(String item){
+    public void addIncludes(String item) {
         this.includes.add(item);
     }
 
-    public void removeIncludes(String item){
+    public void removeIncludes(String item) {
         this.includes.remove(item);
     }
 
-    public void clearIncludes(){
+    public void clearIncludes() {
         this.includes.clear();
     }
 

@@ -1,4 +1,4 @@
-package com.alex.xmlxsdparsing.errorhandler;
+package com.alex.xmlxsdparsing.parser.errorhandler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

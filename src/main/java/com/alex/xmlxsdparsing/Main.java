@@ -2,54 +2,48 @@ package com.alex.xmlxsdparsing;
 
 import com.alex.xmlxsdparsing.entity.TouristVoucher;
 import com.alex.xmlxsdparsing.exception.*;
-import com.alex.xmlxsdparsing.parser.DomParser;
-import com.alex.xmlxsdparsing.parser.SaxParser;
-import com.alex.xmlxsdparsing.parser.StaxParser;
+import com.alex.xmlxsdparsing.parser.builder.TouristVouchersBuilder;
+import com.alex.xmlxsdparsing.parser.factory.BuilderFactory;
 import com.alex.xmlxsdparsing.validator.impl.XMLValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
 import java.util.Set;
 
 public class Main {
     private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
+        String xmlFileName = "data/tourist-vouchers.xml";
         XMLValidator validator = new XMLValidator();
         try {
             logger.info(validator.validateXML());
         } catch (ValidationException e) {
             logger.error(e.getMessage(), e);
         }
-
-        DomParser domParser = new DomParser();
+        TouristVouchersBuilder builder = BuilderFactory.buildParser("dom");
         try {
-            domParser.buildSetVouchers("data/tourist-vouchers.xml");
-        } catch (DomParserBuildVouchersException e) {
+            builder.buildSetVouchers(xmlFileName);
+        } catch (ParserBuildVouchersException e) {
             logger.error(e.getMessage(), e);
         }
-        Set<TouristVoucher> domVouchers = domParser.getVouchers();
-        domVouchers.toString();
-
-        StaxParser staxParser = new StaxParser();
+        Set<TouristVoucher> domVouchers = builder.getVouchers();
+        logger.info(domVouchers.toString());
+        builder = BuilderFactory.buildParser("stax");
         try {
-            staxParser.buildSetVouchers("data/tourist-vouchers.xml");
-        } catch (StaxParserBuildVouchersException e) {
+            builder.buildSetVouchers(xmlFileName);
+        } catch (ParserBuildVouchersException e) {
             logger.error(e.getMessage(), e);
         }
-        Set<TouristVoucher> staxVouchers = staxParser.getVouchers();
-        staxVouchers.toString();
-
-        SaxParser saxParser = new SaxParser();
+        Set<TouristVoucher> staxVouchers = builder.getVouchers();
+        logger.info(staxVouchers.toString());
+        builder = BuilderFactory.buildParser("sax");
         try {
-            saxParser.buildSetVouchers("data/tourist-vouchers.xml");
-        } catch (SaxParserBuildVouchersException e) {
+            builder.buildSetVouchers(xmlFileName);
+        } catch (ParserBuildVouchersException e) {
             logger.error(e.getMessage(), e);
         }
-        Set<TouristVoucher> saxVouchers = saxParser.getVouchers();
-        saxVouchers.toString();
-
-        //var t = Arrays.deepEquals(domVouchers.toArray(), saxVouchers.toArray());
+        Set<TouristVoucher> saxVouchers = builder.getVouchers();
+        logger.info(saxVouchers.toString());
     }
 }

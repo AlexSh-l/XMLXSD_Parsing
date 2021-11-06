@@ -3,9 +3,10 @@ package com.alex.xmlxsdparsing.parser;
 import com.alex.xmlxsdparsing.entity.Cost;
 import com.alex.xmlxsdparsing.entity.Hotel;
 import com.alex.xmlxsdparsing.entity.TouristVoucher;
-import com.alex.xmlxsdparsing.entity.enumerationvalue.FoodType;
-import com.alex.xmlxsdparsing.entity.enumerationvalue.VoucherType;
-import com.alex.xmlxsdparsing.exception.StaxParserBuildVouchersException;
+import com.alex.xmlxsdparsing.entity.enumvalue.FoodType;
+import com.alex.xmlxsdparsing.entity.enumvalue.VoucherType;
+import com.alex.xmlxsdparsing.exception.ParserBuildVouchersException;
+import com.alex.xmlxsdparsing.parser.builder.TouristVouchersBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,7 +22,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-public class StaxParser {
+public class StaxParser extends TouristVouchersBuilder {
 
     private static final Logger logger = LogManager.getLogger();
     private final Set<TouristVoucher> vouchers;
@@ -36,7 +37,8 @@ public class StaxParser {
         return vouchers;
     }
 
-    public void buildSetVouchers(String filename) throws StaxParserBuildVouchersException {
+    @Override
+    public void buildSetVouchers(String filename) throws ParserBuildVouchersException {
         XMLStreamReader reader;
         String name;
         try (FileInputStream inputStream = new FileInputStream(new File(filename))) {
@@ -51,12 +53,13 @@ public class StaxParser {
                     }
                 }
             }
+            super.setVouchers(vouchers);
         } catch (XMLStreamException | FileNotFoundException e) {
             logger.error(e.getMessage(), e);
-            throw new StaxParserBuildVouchersException(e.getMessage(), e);
+            throw new ParserBuildVouchersException(e.getMessage(), e);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
-            throw new StaxParserBuildVouchersException(e.getMessage(), e);
+            throw new ParserBuildVouchersException(e.getMessage(), e);
         }
     }
 

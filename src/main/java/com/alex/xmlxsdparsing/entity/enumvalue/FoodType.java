@@ -1,4 +1,4 @@
-package com.alex.xmlxsdparsing.entity.enumerationvalue;
+package com.alex.xmlxsdparsing.entity.enumvalue;
 
 public enum FoodType {
     BB,

@@ -1,6 +1,6 @@
 package com.alex.xmlxsdparsing.entity;
 
-import com.alex.xmlxsdparsing.entity.enumerationvalue.FoodType;
+import com.alex.xmlxsdparsing.entity.enumvalue.FoodType;
 
 public class Hotel {
 
@@ -12,7 +12,7 @@ public class Hotel {
     private boolean isTVIncluded;
     private boolean isConditionerIncluded;
 
-    public Hotel(){
+    public Hotel() {
 
     }
 

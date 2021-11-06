@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.task3.com/tourist-vouchers schema.xsd">
 
     <c:tourist-voucher id="ID-1235469875">
-        <Voucher-type>Packet_tour</Voucher-type>
+        <Voucher-type>PACKET_TOUR</Voucher-type>
         <Country>Мексика</Country>
         <Number-days>2</Number-days>
         <Number-nights>2</Number-nights>
@@ -29,7 +29,7 @@
     </c:tourist-voucher>
 
     <c:tourist-voucher id="ID-1343">
-        <Voucher-type>Shop_tour</Voucher-type>
+        <Voucher-type>SHOP_TOUR</Voucher-type>
         <Country>Германия</Country>
         <Number-days>10</Number-days>
         <Number-nights>9</Number-nights>
@@ -51,7 +51,7 @@
     </c:tourist-voucher>
 
     <c:tourist-voucher id="ID-567">
-        <Voucher-type>Cruise</Voucher-type>
+        <Voucher-type>CRUISE</Voucher-type>
         <Country>Норвегия</Country>
         <Country>Швеция</Country>
         <Country>Италия</Country>

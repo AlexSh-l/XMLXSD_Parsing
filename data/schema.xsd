@@ -12,14 +12,14 @@
 
     <simpleType name="voucher-type">
         <restriction base="string">
-            <enumeration value="Packet_tour"/>
-            <enumeration value="Individual_tour"/>
-            <enumeration value="Burning_tour"/>
-            <enumeration value="Excursion_tour"/>
-            <enumeration value="Sport_tour"/>
-            <enumeration value="Cruise"/>
-            <enumeration value="Hiking_trip"/>
-            <enumeration value="Shop_tour"/>
+            <enumeration value="PACKET_TOUR"/>
+            <enumeration value="INDIVIDUAL_TOUR"/>
+            <enumeration value="BURNING_TOUR"/>
+            <enumeration value="EXCURSION_TOUR"/>
+            <enumeration value="SPORT_TOUR"/>
+            <enumeration value="CRUISE"/>
+            <enumeration value="HIKING_TRIP"/>
+            <enumeration value="SHOP_TOUR"/>
         </restriction>
     </simpleType>
 
