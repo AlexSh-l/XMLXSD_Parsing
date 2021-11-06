@@ -1,6 +1,7 @@
 package com.alex.xmlxsdparsing.exception;
 
 public class ValidationException extends Exception {
+
     public ValidationException(String message) {
         super(message);
     }

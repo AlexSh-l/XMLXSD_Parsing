@@ -1,8 +1,11 @@
 package com.alex.xmlxsdparsing;
 
 import com.alex.xmlxsdparsing.entity.TouristVoucher;
+import com.alex.xmlxsdparsing.exception.DomParserBuildVouchersException;
+import com.alex.xmlxsdparsing.exception.StaxParserBuildVouchersException;
 import com.alex.xmlxsdparsing.exception.ValidationException;
 import com.alex.xmlxsdparsing.parser.DomParser;
+import com.alex.xmlxsdparsing.parser.StaxParser;
 import com.alex.xmlxsdparsing.validator.impl.XMLValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,8 +24,21 @@ public class Main {
         }
 
         DomParser domParser = new DomParser();
-        domParser.buildSetVouchers("data/tourist-vouchers.xml");
-        Set<TouristVoucher> vouchers = domParser.getVouchers();
-        vouchers.toString();
+        try {
+            domParser.buildSetVouchers("data/tourist-vouchers.xml");
+        } catch (DomParserBuildVouchersException e) {
+            logger.error(e.getMessage(), e);
+        }
+        Set<TouristVoucher> domVouchers = domParser.getVouchers();
+        domVouchers.toString();
+
+        StaxParser staxParser = new StaxParser();
+        try{
+            staxParser.buildSetVouchers("data/tourist-vouchers.xml");
+        }catch (StaxParserBuildVouchersException e){
+            logger.error(e.getMessage(), e);
+        }
+        Set<TouristVoucher> staxVouchers = staxParser.getVouchers();
+        staxVouchers.toString();
     }
 }

@@ -5,6 +5,7 @@ import com.alex.xmlxsdparsing.entity.Hotel;
 import com.alex.xmlxsdparsing.entity.TouristVoucher;
 import com.alex.xmlxsdparsing.entity.enumerationvalue.FoodType;
 import com.alex.xmlxsdparsing.entity.enumerationvalue.VoucherType;
+import com.alex.xmlxsdparsing.exception.DomParserBuildVouchersException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.*;
@@ -19,9 +20,9 @@ import java.util.*;
 
 public class DomParser {
 
+    private static final Logger logger = LogManager.getLogger();
     private final Set<TouristVoucher> vouchers;
     private DocumentBuilder docBuilder;
-    private static final Logger logger = LogManager.getLogger();
 
     public DomParser() {
         vouchers = new HashSet<>();
@@ -37,7 +38,7 @@ public class DomParser {
         return vouchers;
     }
 
-    public void buildSetVouchers(String filename) {
+    public void buildSetVouchers(String filename) throws DomParserBuildVouchersException {
         Document doc;
         try {
             doc = docBuilder.parse(filename);
@@ -52,13 +53,14 @@ public class DomParser {
             }
         } catch (IOException | SAXException e) {
             logger.error(e.getMessage(), e);
+            throw new DomParserBuildVouchersException(e.getMessage(), e);
         }
     }
 
     private TouristVoucher buildVoucher(Node voucherElement) {
         TouristVoucher voucher = new TouristVoucher();
-        String voucherId = voucherElement.getAttributes().getNamedItem("id").getTextContent();
-        voucher.setId(voucherId);
+        Node voucherIdNode = voucherElement.getAttributes().getNamedItem("id");
+        voucher.setId(voucherIdNode.getTextContent());
         Node voucherNameNode = voucherElement.getAttributes().getNamedItem("name");
         if (voucherNameNode != null) {
             voucher.setName(voucherNameNode.getTextContent());
